@@ -1,0 +1,12 @@
+# 빌드 폴더 및 IDE 파일 무시
+/build
+.idea/
+*.iml
+*.class
+
+# OS 파일 무시
+.DS_Store
+
+# 환경 변수 파일
+application.properties
+application.yml
