@@ -8,3 +8,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+jwt:
+  secret-key: "${JWT_SECRET_KEY:6d9f6e1c2d7245d4afee5e2f6d4e1a38f0c4e92b438d846c8d93564f3f6a0b21}"
+  access-token-validity: 3600000 # Access Token 유효 시간 (1시간)
+  refresh-token-validity: 1209600000 # Refresh Token 유효 시간 (2주)

@@ -26,4 +26,8 @@ class UserService(
         user.isActive = true
         userRepository.save(user)
     }
+
+    fun isPasswordMatch(rawPassword: String, hashedPassword: String): Boolean {
+        return passwordEncoder.matches(rawPassword, hashedPassword)
+    }
 }
