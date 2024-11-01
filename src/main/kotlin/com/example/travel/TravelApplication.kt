@@ -1,4 +1,3 @@
-// Application.kt
 package com.example.travel
 
 import org.springframework.boot.autoconfigure.SpringBootApplication

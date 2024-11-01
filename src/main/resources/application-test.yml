@@ -8,6 +8,18 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: lee66627586@gmail.com # 발신자 이메일 주소
+    password: grje zrtw frib eiie # 발신자 이메일의 애플리케이션 비밀번호
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 jwt:
   secret-key: "${JWT_SECRET_KEY:6d9f6e1c2d7245d4afee5e2f6d4e1a38f0c4e92b438d846c8d93564f3f6a0b21}"
   access-token-validity: 3600000 # Access Token 유효 시간 (1시간)

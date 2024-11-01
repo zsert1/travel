@@ -1,4 +1,3 @@
-// AuthController.kt
 package com.example.travel.controller
 
 import com.example.travel.security.JwtTokenProvider
@@ -25,6 +24,15 @@ class AuthController(
         return ResponseEntity("회원가입 성공: 이메일 인증을 완료해 주세요.", HttpStatus.CREATED)
     }
 
+    @GetMapping("/verify")
+    fun verifyEmail(@RequestParam token: String): ResponseEntity<String> {
+        val isVerified = userService.activateUser(token)
+        return if (isVerified) {
+            ResponseEntity("이메일 인증이 완료되었습니다.", HttpStatus.OK)
+        } else {
+            ResponseEntity("유효하지 않은 인증 토큰입니다.", HttpStatus.BAD_REQUEST)
+        }
+    }
     @PostMapping("/login")
     fun loginUser(@RequestParam email: String, @RequestParam password: String): ResponseEntity<Map<String, String>> {
         val user = userService.findByEmail(email)
