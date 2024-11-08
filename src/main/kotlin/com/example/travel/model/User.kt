@@ -18,3 +18,9 @@ data class User(
     @Column(name = "is_active")
     var isActive: Boolean = false // 이메일 인증 여부 확인
 )
+
+
+data class RegisterRequest(
+    val email: String,
+    val password: String
+)

@@ -11,8 +11,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: lee66627586@gmail.com # 발신자 이메일 주소
-    password: grje zrtw frib eiie # 발신자 이메일의 애플리케이션 비밀번호
+    username: lee66627586@gmail.com
+    password: "kpxv blha bmlw dxmj"
     properties:
       mail:
         smtp:

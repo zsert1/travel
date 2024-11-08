@@ -8,6 +8,7 @@ import jakarta.mail.internet.MimeMessage
 class EmailService(private val mailSender: JavaMailSender) {
 
     fun sendEmail(to: String, subject: String, text: String) {
+      
         val message: MimeMessage = mailSender.createMimeMessage()
         val helper = MimeMessageHelper(message, true)
         

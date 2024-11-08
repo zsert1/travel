@@ -12,7 +12,7 @@ class CorsConfig {
         val source = UrlBasedCorsConfigurationSource()
         val config = CorsConfiguration().apply {
             allowCredentials = true
-            addAllowedOrigin("*") // 모든 도메인 허용
+            addAllowedOriginPattern("*") // 모든 도메인 허용
             addAllowedHeader("*")
             addAllowedMethod("*")
         }

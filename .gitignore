@@ -11,3 +11,4 @@
 application.properties
 application.yml
 application-test.yml
+src/main/resources/application-test.yml
