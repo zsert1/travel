@@ -1,14 +1,17 @@
 # 빌드 폴더 및 IDE 파일 무시
-/build
+/build/
 .idea/
 *.iml
 *.class
+.gradle/
+.vscode/
+*.code-workspace
 
 # OS 파일 무시
 .DS_Store
 
 # 환경 변수 파일
-application.properties
-application.yml
-application-test.yml
-src/main/resources/application-test.yml
+*.properties
+*.yml
+src/main/resources/*.yml
+src/main/resources/*.properties
