@@ -18,9 +18,21 @@ class UserService(
 ) {
 
   
-    fun registerUser(email: String, password: String): User {
-        val encodedPassword = passwordEncoder.encode(password)
-        val user = userRepository.save(User(email = email, hashedPassword = encodedPassword))
+    fun registerUser(email: String, password: String,nickName:String): User {
+        val encodedPassword = if (!password.isNullOrEmpty()) {
+            passwordEncoder.encode(password)
+        } else {
+            throw IllegalArgumentException("Password cannot be null or empty")
+        }
+    
+        val user = userRepository.save(
+            User(
+                email = email,
+                hashedPassword = encodedPassword,
+                nickName=nickName
+            )
+        )
+    
 
         // 이메일 인증 토큰 생성
         val token = VerificationToken(user = user)
@@ -63,7 +75,29 @@ class UserService(
         return true
     }
 
-    fun isPasswordMatch(rawPassword: String, hashedPassword: String): Boolean {
+    fun isPasswordMatch(rawPassword: String, hashedPassword: String?): Boolean {
+        if (hashedPassword.isNullOrEmpty()) {
+            return false
+        }
         return passwordEncoder.matches(rawPassword, hashedPassword)
     }
+
+    fun registerOrLoginWithKakao(kakaoId: String, email: String, nickname: String): User {
+        val existingUser = userRepository.findByKakaoId(kakaoId)
+            ?: userRepository.findByEmail(email)
+    
+        return if (existingUser == null) {
+            // 신규 사용자 등록
+            val newUser = User(
+                kakaoId = kakaoId,
+                email = email,
+                nickName = nickname,
+                isActive = true // 카카오는 이메일 인증 불필요
+            )
+            userRepository.save(newUser)
+        } else {
+            existingUser
+        }
+    }
+    
 }

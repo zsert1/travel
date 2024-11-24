@@ -12,15 +12,29 @@ data class User(
     @Column(nullable = false, unique = true)
     val email: String,
 
-    @Column(name = "hashed_password", nullable = false)
-    var hashedPassword: String,
+    @Column(nullable = true, unique = true)
+    val kakaoId: String? = null, // 카카오 사용자 ID
+
+    @Column(name = "hashed_password", nullable = true)
+    var hashedPassword: String?=null,
 
     @Column(name = "is_active")
-    var isActive: Boolean = false // 이메일 인증 여부 확인
+    var isActive: Boolean = false ,// 이메일 인증 여부 확인
+
+    @Column(nullable = false, unique = true)
+    val nickName: String // 닉네임
 )
 
 
 data class RegisterRequest(
     val email: String,
-    val password: String
+    val password: String,
+    val nickName:String
 )
+
+data class KakaoUserInfo(
+    val kakaoId: String,
+    val email: String,
+    val nickname: String
+)
+
