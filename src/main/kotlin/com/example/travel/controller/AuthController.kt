@@ -4,6 +4,7 @@ import com.example.travel.security.JwtTokenProvider
 import com.example.travel.service.UserService
 import com.example.travel.service.KakaoAuthService
 import com.example.travel.model.RegisterRequest
+import com.example.travel.model.LoginRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -45,7 +46,7 @@ class AuthController(
         }
     }
     @PostMapping("/login")
-    fun loginUser(@RequestBody request: RegisterRequest): ResponseEntity<Map<String, String>> {
+    fun loginUser(@RequestBody request: LoginRequest): ResponseEntity<Map<String, String>> {
         val user = userService.findByEmail(request.email)
             ?: return ResponseEntity(mapOf("error" to "사용자를 찾을 수 없습니다."), HttpStatus.UNAUTHORIZED)
     

@@ -38,3 +38,9 @@ data class KakaoUserInfo(
     val nickname: String
 )
 
+data class LoginRequest(
+    val email: String,
+    val password: String,
+ 
+)
+
